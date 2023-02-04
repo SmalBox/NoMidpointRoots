@@ -38,6 +38,9 @@ namespace Auto.Logic.Core.Message
 		
 		// 数据变动
 		DATA_CHANGE_SCORE,
+
+		//场景相关
+		ENTER_OBJECT,//树根碰到某个东西
 	}
 
 	public enum MessengerMode

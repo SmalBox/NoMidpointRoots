@@ -62,6 +62,8 @@ public class GameMain : SingletonMonoClass<GameMain>
             GameObject.Find("UICanvas").transform) as GameObject)?.GetComponent<InfoPanel>();
         // 启动倒计时
         TimeMgr.Ins.StartCountdown();
+        //场景相关
+        SceneManager.Inst.OnGameStart();
     }
 
     public void RestartGame()
