@@ -19,10 +19,6 @@ namespace Auto.Logic.Core.Message
 	/// </summary>
 	public enum MessengerEventType
 	{
-		// 文件路径
-		PATH_SELECT_TARGET_PATH, // 目标路径选择
-		PATH_SELECT_OUTPUT_PATH, // 输出路径选择
-		
 		// 声音事件
 		VOLUME_MUSICAL, // 音乐音量
 		VOLUME_SOUND_EFFECT, // 音效音量
@@ -32,8 +28,9 @@ namespace Auto.Logic.Core.Message
 		LOG_WARNING,
 		LOG_ERROR,
 		
-		// 预览preview
-		PREVIEW_IMAGE,
+		// 信息
+		INFO_TIME,
+		INFO_SCORE,
 	}
 
 	public enum MessengerMode
