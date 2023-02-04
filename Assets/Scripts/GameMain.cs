@@ -20,7 +20,13 @@ public class GameMain : SingletonMonoClass<GameMain>
     private void Init()
     {
         TimeMgr.Ins.Init(gameTime);
-        // test 倒计时
+    }
+
+    /// <summary> 开始游戏 </summary>
+    public void StartGame()
+    {
+        Debug.Log("开始游戏");
+        // 启动倒计时
         TimeMgr.Ins.StartCountdown();
     }
 }

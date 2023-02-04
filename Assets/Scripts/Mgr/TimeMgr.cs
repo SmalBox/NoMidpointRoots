@@ -42,6 +42,8 @@ public class TimeMgr : SingletonMonoClass<TimeMgr>
 
     IEnumerator Countdown()
     {
+        Messenger<int>.Broadcast(MessengerEventType.INFO_TIME, curTime--,
+                MessengerMode.DONT_REQUIRE_LISTENER);
         while (curTime >= 0)
         {
             yield return new WaitForSeconds(1);
