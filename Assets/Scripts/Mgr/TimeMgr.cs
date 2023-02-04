@@ -50,5 +50,7 @@ public class TimeMgr : SingletonMonoClass<TimeMgr>
             Messenger<int>.Broadcast(MessengerEventType.INFO_TIME, curTime--,
                 MessengerMode.DONT_REQUIRE_LISTENER);
         }
+        Messenger<int>.Broadcast(MessengerEventType.PROGRESS_END, ScoreMgr.Ins.CurScore,
+                MessengerMode.DONT_REQUIRE_LISTENER);       
     }
 }

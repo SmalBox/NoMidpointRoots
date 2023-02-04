@@ -19,6 +19,10 @@ namespace Auto.Logic.Core.Message
 	/// </summary>
 	public enum MessengerEventType
 	{
+		// 游戏开始结束
+		PROGRESS_START,
+		PROGRESS_END,
+		
 		// 声音事件
 		VOLUME_MUSICAL, // 音乐音量
 		VOLUME_SOUND_EFFECT, // 音效音量
@@ -31,6 +35,9 @@ namespace Auto.Logic.Core.Message
 		// 信息
 		INFO_TIME,
 		INFO_SCORE,
+		
+		// 数据变动
+		DATA_CHANGE_SCORE,
 	}
 
 	public enum MessengerMode

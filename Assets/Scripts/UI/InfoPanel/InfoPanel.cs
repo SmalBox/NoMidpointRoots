@@ -7,6 +7,13 @@ public class InfoPanel : UIBase
     [SerializeField] private Text timeText;
     [SerializeField] private Text scoreText;
 
+    public override void Init()
+    {
+        base.Init();
+        timeText.text = TimeMgr.Ins.DefaultTime.ToString();
+        scoreText.text = "0";
+    }
+
     public override void Register()
     {
         base.Register();
