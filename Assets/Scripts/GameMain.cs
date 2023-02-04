@@ -10,7 +10,11 @@ public class GameMain : SingletonMonoClass<GameMain>
 
     [Header("游戏配置：")]
     public int gameTime = 60;
-    
+
+    [Header("End动画，分数阶段：(与下一项的个数顺序要对应！)")]
+    public List<int> scoreStageList;
+    [Header("End动画，分数阶段对应动画名字：")]
+    public List<string> scoreStageAnimNameList;
 
     #endregion
     private void Start()
