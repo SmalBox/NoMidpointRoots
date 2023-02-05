@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691485617900635283}
-  - component: {fileID: 5691485617900635280}
+  - component: {fileID: 5215062749858812510}
   - component: {fileID: 5691485617900635282}
   - component: {fileID: 5691485617900635281}
   m_Layer: 0
@@ -28,12 +28,12 @@ Transform:
   m_GameObject: {fileID: 5691485617900635284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5691485617900635280
+--- !u!114 &5215062749858812510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5691485617900635284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8a5fa96c6bfaef489ee1a9e1131c362, type: 3}
+  m_Script: {fileID: 11500000, guid: 7136cabfd94a1464b8bcd989d03a0956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 4
+  score: 5
 --- !u!212 &5691485617900635282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,5 +109,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.62, y: 2.35, z: 0.2}
+  m_Center: {x: -0.11, y: 0, z: 0}

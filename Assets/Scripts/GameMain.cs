@@ -75,10 +75,10 @@ public class GameMain : SingletonMonoClass<GameMain>
 
     private void Update()
     {
-        // 测试加分数
-        if (Input.GetMouseButtonDown(0))
-        {
-            Messenger<int>.Broadcast(MessengerEventType.DATA_CHANGE_SCORE, 1);
-        }
+        // // 测试加分数
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     Messenger<int>.Broadcast(MessengerEventType.DATA_CHANGE_SCORE, 1);
+        // }
     }
 }

@@ -25,7 +25,8 @@ public class SceneManager : MonoBehaviour
     {
         hideObj.SetActive(true);
         //创建资源
-        CreatAssets();
+        //CreatAssets();
+        CreateAssets(30);
         //树根生长
         RootManager.Inst.StartGrowth();
     }
@@ -42,5 +43,42 @@ public class SceneManager : MonoBehaviour
             asset.transform.position = new Vector3(x, 0, 0);
             x+=3;
         }
+    }
+
+    private void CreateAssets(int num)
+    {
+        Vector3 randomPos = new Vector3();
+        for (int i = 0; i < num; i++)
+        {
+            // 随机选生成一个资源
+            var item = allAssetPrefabs[Random.Range(0, allAssetPrefabs.Count)];
+            var asset = Instantiate<SceneObjectBase>(item, assetRoot);
+            // 随机位置生成资源
+            asset.transform.localPosition = GetRandomPos(randomPos);
+        }
+    }
+
+    private List<Vector3> posList = new List<Vector3>();
+    private Vector3 GetRandomPos(Vector3 randomPos)
+    {
+        do
+        {
+            randomPos.x = Random.Range(-10f, 10f);
+            randomPos.y = Random.Range(0f, -10f);       
+        } while (!CheckPosRight(randomPos));
+        posList.Add(new Vector3(randomPos.x, randomPos.y));
+        return randomPos;
+    }
+
+    private bool CheckPosRight(Vector3 randomPos)
+    {
+        foreach (Vector3 pos in posList)
+        {
+            if ((pos.x > randomPos.x - 1 && pos.x < randomPos.x + 1) &&
+                (pos.y > randomPos.y - 1 && pos.y < randomPos.y + 1))
+                return false;
+        }
+
+        return true;
     }
 }
