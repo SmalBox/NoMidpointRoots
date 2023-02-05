@@ -199,11 +199,12 @@ public class RootBranch : MonoBehaviour
     private void OnOtherEnter(SceneObjectBase sceneObject) 
     {
         //资源
-        if(sceneObject.ObjectType < ObjectType.Water)
+        if(sceneObject.ObjectType < ObjectType.AirWall)
         {
             SceneAsset asset = (SceneAsset)sceneObject;
             if(!asset.IsGet)
             {
+                asset.Collected(); // 出发收集的资源状态
                 curStatu = BranchStatu.CanCreateOther;//标记状态为可创建分支
                 Messenger<int>.Broadcast(MessengerEventType.DATA_CHANGE_SCORE, asset.Score);//加积分
             }

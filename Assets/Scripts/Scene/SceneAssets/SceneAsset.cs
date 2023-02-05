@@ -20,4 +20,14 @@ public class SceneAsset : SceneObjectBase
         
     public int Score { get => score; }
     public bool IsGet { get => isGet; }
+
+    public void Collected()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            spriteRenderer.color = Color.black;
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+            animator.speed = 0;
+    }
 }

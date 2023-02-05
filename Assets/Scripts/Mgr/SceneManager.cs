@@ -48,6 +48,7 @@ public class SceneManager : MonoBehaviour
     private void CreateAssets(int num)
     {
         Vector3 randomPos = new Vector3();
+        Vector3 randomRotate = new Vector3();
         for (int i = 0; i < num; i++)
         {
             // 随机选生成一个资源
@@ -55,6 +56,8 @@ public class SceneManager : MonoBehaviour
             var asset = Instantiate<SceneObjectBase>(item, assetRoot);
             // 随机位置生成资源
             asset.transform.localPosition = GetRandomPos(randomPos);
+            randomRotate.z = Random.Range(0f, 360f);
+            if (asset.ObjectType == ObjectType.Worms) asset.transform.Rotate(randomRotate);
         }
     }
 
@@ -63,8 +66,8 @@ public class SceneManager : MonoBehaviour
     {
         do
         {
-            randomPos.x = Random.Range(-10f, 10f);
-            randomPos.y = Random.Range(0f, -10f);       
+            randomPos.x = Random.Range(-8f, 8f);
+            randomPos.y = Random.Range(0f, -7f);       
         } while (!CheckPosRight(randomPos));
         posList.Add(new Vector3(randomPos.x, randomPos.y));
         return randomPos;
