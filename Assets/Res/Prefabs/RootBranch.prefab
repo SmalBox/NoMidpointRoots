@@ -48,7 +48,7 @@ MonoBehaviour:
   lineRender: {fileID: 4080161448269564430}
   trigger: {fileID: 4080161448371154477}
   growthRate: 0.1
-  growthScale: 0.2
+  growthScale: 0.1
   stopDistance: 0.1
 --- !u!120 &4080161448269564430
 LineRenderer:

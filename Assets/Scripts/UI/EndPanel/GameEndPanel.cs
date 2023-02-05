@@ -38,6 +38,7 @@ public class GameEndPanel : UIBase
     private void OnRestartBtn()
     {
         GameMain.Ins.RestartGame();
+        SoundMgr.Ins.PlaySound(SoundMgr.SoundType.Click);
         Destroy(gameObject);
     }
 
@@ -48,7 +49,8 @@ public class GameEndPanel : UIBase
     /// <returns></returns>
     private string GetEndAnimName(int score)
     {
-        string endAnimName = "PerishAnim";
+        //string endAnimName = "PerishAnim";
+        string endAnimName = "";
         if (GameMain.Ins.scoreStageList.Count > 0 &&
             GameMain.Ins.scoreStageList.Count == GameMain.Ins.scoreStageAnimNameList.Count)
         {
@@ -57,7 +59,8 @@ public class GameEndPanel : UIBase
                 if (score >= GameMain.Ins.scoreStageList[i])
                 {
                     endAnimName = GameMain.Ins.scoreStageAnimNameList[i];
-                }
+                    SoundMgr.Ins.PlaySound(SoundMgr.SoundType.Succeed);
+                } 
             }
         }
         else
@@ -65,6 +68,12 @@ public class GameEndPanel : UIBase
             Debug.LogWarning(
                 "<color=yellow>检查GameMain的 scoreStageList和scoreStageAnimNameList 配置</color>"
                 );
+        }
+
+        if (string.IsNullOrEmpty(endAnimName))
+        {
+            endAnimName = "PerishAnim";
+            SoundMgr.Ins.PlaySound(SoundMgr.SoundType.Fail);
         }
 
         return endAnimName;

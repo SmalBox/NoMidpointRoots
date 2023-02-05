@@ -75,6 +75,11 @@ public class SceneManager : MonoBehaviour
 
     private bool CheckPosRight(Vector3 randomPos)
     {
+        if ((-2 > randomPos.x - 1) &&
+            (2 < randomPos.x + 1) &&
+            (0 > randomPos.y - 1) &&
+            (-3 < randomPos.y + 1))
+            return false;
         foreach (Vector3 pos in posList)
         {
             if ((pos.x > randomPos.x - 1 && pos.x < randomPos.x + 1) &&

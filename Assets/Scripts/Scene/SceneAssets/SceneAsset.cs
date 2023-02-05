@@ -29,5 +29,12 @@ public class SceneAsset : SceneObjectBase
         Animator animator = GetComponent<Animator>();
         if (animator != null)
             animator.speed = 0;
+        if (ObjectType < ObjectType.Stone ||
+            ObjectType == ObjectType.Water)
+            SoundMgr.Ins.PlaySound(SoundMgr.SoundType.GetEnergy);
+        if (ObjectType == ObjectType.Stone)
+            SoundMgr.Ins.PlaySound(SoundMgr.SoundType.HitStone);
+        if (ObjectType == ObjectType.Worms)
+            SoundMgr.Ins.PlaySound(SoundMgr.SoundType.HitWorm);
     }
 }

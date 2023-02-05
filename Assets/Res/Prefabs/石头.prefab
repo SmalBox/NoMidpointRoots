@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 3
-  score: -1
+  score: -3
 --- !u!212 &7157360516705325846
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,5 +109,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.32, z: 0.2}
+  m_Size: {x: 1.95, y: 1.14, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
