@@ -15,7 +15,7 @@ public abstract class SceneObjectBase : MonoBehaviour
         var branch = other.GetComponentInParent<RootBranch>();
         if(branch != null)
         {
-            Messenger<SceneObjectBase>.Broadcast(MessengerEventType.ENTER_OBJECT, this);
+            Messenger<SceneObjectBase, RootBranch>.Broadcast(MessengerEventType.ENTER_OBJECT, this, branch);
 
             OnBranchEnter(branch);
         }

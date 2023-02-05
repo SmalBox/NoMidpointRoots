@@ -40,12 +40,12 @@ public class RootBranch : MonoBehaviour
 
     private void OnEnable() 
     {
-        Messenger<SceneObjectBase>.AddListener(MessengerEventType.ENTER_OBJECT, OnOtherEnter);
+        Messenger<SceneObjectBase, RootBranch>.AddListener(MessengerEventType.ENTER_OBJECT, OnOtherEnter);
     }
 
     private void OnDisable() 
     {
-        Messenger<SceneObjectBase>.RemoveListener(MessengerEventType.ENTER_OBJECT, OnOtherEnter);
+        Messenger<SceneObjectBase, RootBranch>.RemoveListener(MessengerEventType.ENTER_OBJECT, OnOtherEnter);
     }
 
     private void Update() 
@@ -184,9 +184,10 @@ public class RootBranch : MonoBehaviour
                     if((pos - clickPos).sqrMagnitude < stopDistance * stopDistance)
                     {
                         float dirX = Random.Range(-1,2);
-                        float dirY = Random.Range(-1, 2);
+                        float dirY = Random.Range(-1, 0);
                         RootManager.Inst.CreateNewBranch(pos, new Vector3(dirX, dirY, 0f));
                         curStatu = BranchStatu.Static;
+                        return;
                     }
                 }
             }
@@ -196,8 +197,12 @@ public class RootBranch : MonoBehaviour
     /// <summary>
     /// 碰到东西
     /// </summary>
-    private void OnOtherEnter(SceneObjectBase sceneObject) 
+    private void OnOtherEnter(SceneObjectBase sceneObject, RootBranch branch) 
     {
+        if(!branch.Equals(this))
+        {
+            return;
+        }
         //资源
         if(sceneObject.ObjectType < ObjectType.AirWall)
         {
