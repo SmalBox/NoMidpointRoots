@@ -6,6 +6,8 @@ public class InfoPanel : UIBase
 {
     [SerializeField] private Text timeText;
     [SerializeField] private Text scoreText;
+    
+    [SerializeField] private Button returnBtn;
 
     public override void Init()
     {
@@ -19,6 +21,7 @@ public class InfoPanel : UIBase
         base.Register();
         Messenger<int>.AddListener(MessengerEventType.INFO_TIME, OnChangeInfoTime);
         Messenger<int>.AddListener(MessengerEventType.INFO_SCORE, OnChangeInfoScore);
+        returnBtn.onClick.AddListener(OnReturnBtn);
     }
 
     public override void UnRegister()
@@ -26,6 +29,7 @@ public class InfoPanel : UIBase
         base.UnRegister();
         Messenger<int>.RemoveListener(MessengerEventType.INFO_TIME, OnChangeInfoTime);
         Messenger<int>.RemoveListener(MessengerEventType.INFO_SCORE, OnChangeInfoScore);
+        returnBtn.onClick.RemoveAllListeners();
     }
 
     /// <summary>
@@ -44,5 +48,11 @@ public class InfoPanel : UIBase
     private void OnChangeInfoScore(int score)
     {
         scoreText.text = score.ToString();
+    }
+
+    private void OnReturnBtn()
+    {
+        GameMain.Ins.RestartGame();
+        SoundMgr.Ins.PlaySound(SoundMgr.SoundType.Click);       
     }
 }
