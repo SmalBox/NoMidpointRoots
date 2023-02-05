@@ -70,30 +70,37 @@ public class RootBranch : MonoBehaviour
     /// <summary>
     /// 出生
     /// </summary>
-    public void Born(Vector3 bornPos, Vector3 baseDir, float distance)
+    public void Born(Vector3 bornPos, Vector3 baseDir, float distance, bool needGrowth)
     {
         lineRender.positionCount++;
         lineRender.SetPosition(0, bornPos);
         lastPos = bornPos;
 
-        Vector3 pos = bornPos;
-        Vector3 endPos = pos + baseDir * distance;
-        float length = distance / 10f;
-        Vector3 point = pos;
-        for (int i = 0; i < 10; i++)
+        if(needGrowth)
         {
-            point += baseDir * length;
-            float offset = Random.Range(0, length);
-            point.x += Random.Range(-offset, offset);
-            point.y += Random.Range(-offset, offset);
-            brithList.Add(point);
-        }
-        brithList.Add(endPos);
+            Vector3 pos = bornPos;
+            Vector3 endPos = pos + baseDir * distance;
+            float length = distance / 10f;
+            Vector3 point = pos;
+            for (int i = 0; i < 10; i++)
+            {
+                point += baseDir * length;
+                float offset = Random.Range(0, length);
+                point.x += Random.Range(-offset, offset);
+                point.y += Random.Range(-offset, offset);
+                brithList.Add(point);
+            }
+            brithList.Add(endPos);
 
-        CalcultateGrowthDir(brithList[0]);
-        brithList.RemoveAt(0);
-        curStatu = BranchStatu.Birth;
-        isGrowthing = true;
+            CalcultateGrowthDir(brithList[0]);
+            brithList.RemoveAt(0);
+            curStatu = BranchStatu.Birth;
+            isGrowthing = true;
+        }
+        else
+        {
+            curStatu = BranchStatu.Normal;
+        }
     }
 
     /// <summary>
@@ -185,7 +192,7 @@ public class RootBranch : MonoBehaviour
                     {
                         float dirX = Random.Range(-1,2);
                         float dirY = Random.Range(-1, 0);
-                        RootManager.Inst.CreateNewBranch(pos, new Vector3(dirX, dirY, 0f));
+                        RootManager.Inst.CreateNewBranch(pos, new Vector3(dirX, dirY, 0f), false);
                         curStatu = BranchStatu.Static;
                         return;
                     }
@@ -211,6 +218,7 @@ public class RootBranch : MonoBehaviour
             {
                 asset.Collected(); // 出发收集的资源状态
                 curStatu = BranchStatu.CanCreateOther;//标记状态为可创建分支
+                trigger.gameObject.SetActive(false);
                 Messenger<int>.Broadcast(MessengerEventType.DATA_CHANGE_SCORE, asset.Score);//加积分
             }
         }

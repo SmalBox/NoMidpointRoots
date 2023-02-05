@@ -24,11 +24,11 @@ public class RootManager : MonoBehaviour
     /// </summary>
     /// <param name="pos"></param>
     /// <param name="bornDir"></param>
-    public void CreateNewBranch(Vector3 pos, Vector3 bornDir)
+    public void CreateNewBranch(Vector3 pos, Vector3 bornDir, bool needGrowth = true)
     {
         curBranch = Instantiate<RootBranch>(branchPrefab, transform);
         curBranch.transform.localPosition = Vector3.zero;
-        curBranch.Born(pos, bornDir, 1);
+        curBranch.Born(pos, bornDir, 1, needGrowth);
     }
 
     /// <summary>
