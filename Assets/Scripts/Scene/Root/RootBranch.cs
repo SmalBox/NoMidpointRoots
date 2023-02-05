@@ -185,7 +185,9 @@ public class RootBranch : MonoBehaviour
             {
                 Vector3 clickPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 clickPos.z = 0f;
-                for (int i = 0; i < lineRender.positionCount-5; i++)
+                int pointCount = lineRender.positionCount;
+                int limitCount = pointCount > 10 ? 5 : 0;
+                for (int i = 0; i < pointCount-limitCount; i++)
                 {
                     Vector3 pos = lineRender.GetPosition(i);
                     if((pos - clickPos).sqrMagnitude < stopDistance * stopDistance)
